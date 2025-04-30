@@ -1,19 +1,19 @@
 <template>
   <div class="contenido">
-    <h2>🗳️ Vota por tu Sabor Favorito</h2>
+    <h2>Vota por tu Idea Favorito</h2>
     <p>Comparte tu creación helada y vota por las más deliciosas ideas.</p>
 
     <div class="formulario">
       <input type="file" accept="image/*" @change="onImageUpload" />
       <textarea v-model="newNote.description" placeholder="Describe tu helado..."></textarea>
-      <button @click="addNote">Subir Notita 🍦</button>
+      <button @click="addNote">Subir Notita </button>
     </div>
 
     <div class="ganador-mes">
-  <div class="decoracion">✨🎉 Ganador del Mes Pasado 🎉✨</div>
+  <div class="decoracion">Ganador del Mes Pasado!!</div>
   <div class="ganador-card">
-    <img src="https://images.unsplash.com/photo-1589712235274-df5c55b94091?auto=format&fit=crop&w=300&q=80" alt="Ganador" />
-    <p class="desc-gana">Frutilla con crema y pétalos de rosa 🌸</p>
+    <img src="@/components/Images/heladoganador.png" alt="Ganador" />
+    <p class="desc-gana">Helado de psas al ron en forma de ardilla con crema </p>
     <span class="estrella">⭐ 152 votos</span>
   </div>
 </div>

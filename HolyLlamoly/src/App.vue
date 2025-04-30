@@ -9,7 +9,7 @@
       <v-toolbar-title 
         @click="$router.push('/')" 
         class="toolbar-title">
-        Holly Molly
+        Holly Llamolly
       </v-toolbar-title>
 
       <!-- Tabs visibles solo en pantallas medianas y grandes -->

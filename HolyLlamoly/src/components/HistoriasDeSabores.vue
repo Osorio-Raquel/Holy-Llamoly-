@@ -1,6 +1,6 @@
 <template>
   <div class="contenido">
-    <h2>📖 Historias de Sabores</h2>
+    <h2>Historias de Sabores</h2>
     <p>Cada sabor tiene una historia mágica. ¡Descúbrela!</p>
 
     <div class="testimonios">
@@ -16,7 +16,7 @@
         </div>
         <div class="tarjeta-back">
           <p class="comentario">"{{ testimonio.mensaje }}"</p>
-          <p class="sabor">🍨 Favorito: <strong>{{ testimonio.sabor }}</strong></p>
+          <p class="sabor">Favorito: <strong>{{ testimonio.sabor }}</strong></p>
         </div>
       </div>
     </div>
@@ -29,25 +29,31 @@ export default {
   data() {
     return {
       testimonios: [
-        {
-          nombre: 'Luna Vlog',
-          mensaje: 'Probé el helado de jazmín y me transportó a mi infancia en el jardín de mi abuela.',
-          foto: 'https://randomuser.me/api/portraits/women/68.jpg',
-          sabor: 'Jazmín encantado',
-        },
-        {
-          nombre: 'Chef Nico',
-          mensaje: 'El toque de sal en el caramelo fue un giro inesperado ¡y delicioso!',
-          foto: 'https://randomuser.me/api/portraits/men/45.jpg',
-          sabor: 'Caramelo rebelde',
-        },
-        {
-          nombre: 'La Guía Rosa',
-          mensaje: 'Es más que un postre, es una experiencia estética y emocional.',
-          foto: 'https://randomuser.me/api/portraits/women/22.jpg',
-          sabor: 'Rosa de los vientos',
-        }
-      ],
+  {
+    nombre: 'Sabrina Carpenter',
+    mensaje: 'Nunca pensé que un helado de lavanda con miel pudiera inspirarme una canción entera. Es pura poesía comestible.',
+    foto: 'https://i.pinimg.com/736x/64/42/ad/6442adb04b33dc6e6b5434fcb06c8d9f.jpg',
+    sabor: 'Lavanda melódica',
+  },
+  {
+    nombre: 'Michael Jackson',
+    mensaje: 'Este helado me hizo decir “hee-hee” sin control. Smooth, cool y con ritmo.',
+    foto: 'https://i.pinimg.com/736x/8a/e9/57/8ae957edc12e719d6a347ee3b395e502.jpg',
+    sabor: 'Moonwalker de vainilla y canela',
+  },
+  {
+    nombre: 'u/FantasyIceLover',
+    mensaje: 'Vine por las reseñas y me quedé por el helado de matcha con glitter comestible. 10/10, volvería.',
+    foto: 'https://i.pinimg.com/736x/84/a0/4d/84a04d19918745996294148deaf8f7c4.jpg',
+    sabor: 'Matcha galáctico',
+  },
+  {
+    nombre: 'RedUno',
+    mensaje: 'No sabía que un helado podía tener personalidad hasta probar el de tumbo con ají. Es arte puro.',
+    foto: 'https://i.pinimg.com/736x/3e/c3/c3/3ec3c3641b3e2e4dfa8e1d0f219ba989.jpg',
+    sabor: 'Fuego tropical',
+  }
+],
     };
   },
 };

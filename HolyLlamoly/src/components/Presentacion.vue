@@ -1,17 +1,14 @@
 <template>
     <v-container fluid class="pa-0">
       <!-- Carrusel Principal -->
-      <v-carousel
-        cycle
-        hide-delimiter-background
-        height="400"
-        class="main-carousel"
-      >
-        <v-carousel-item
-          v-for="(slide, i) in slides"
-          :key="i"
-          :src="slide.image"
-        >
+      <v-carousel cycle hide-delimiter-background height="400" class="main-carousel">
+        <v-carousel-item v-for="(slide, i) in slides" :key="i">
+          <v-img
+            :src="slide.image"
+            class="carousel-image"
+            alt="Imagen del carrusel"
+            height="100%"
+          ></v-img>
           <div class="carousel-text">
             <h1 class="title">{{ slide.title }}</h1>
             <p class="subtitle">{{ slide.subtitle }}</p>
@@ -20,7 +17,7 @@
       </v-carousel>
   
       <!-- Sección Misión / Visión / Valores con Hover Animado -->
-      <v-container class="info-section mt-10">
+      <v-container class="info-section mt-10" style="background-color: #F0D9EF;">
         <v-row justify="center" align="stretch" class="text-center">
           <v-col
             v-for="(item, i) in missionVision"
@@ -29,90 +26,102 @@
             md="4"
             class="info-card"
           >
-            <div 
-              class="info-card-inner"
-              :class="{'hover-effect': true}"
-            >
+            <div class="info-card-inner">
               <h2 class="section-title">{{ item.title }}</h2>
               <p class="section-text">{{ item.text }}</p>
             </div>
           </v-col>
         </v-row>
-      </v-container>
   
-      <!-- Flujos de colores e imágenes de fondo entre secciones -->
-      <div class="flow-section">
-        <div class="flow-background"></div>
-        <h3 class="flow-title">Nuestro Flujo de Sabores</h3>
-      </div>
-  
-      <!-- Mapa Interactivo -->
-      <v-container class="map-container mt-10">
-        <h2 class="map-title">¿Dónde encontrarnos?</h2>
-        <v-row justify="center">
-          <v-col cols="12" md="10">
-            <v-card>
-              <v-img
-                src="https://maps.googleapis.com/maps/api/staticmap?center=La+Paz,Bolivia&zoom=14&size=600x300&markers=color:red%7C-16.500000,-68.119300"
-                alt="Mapa de ubicación"
-                height="300px"
-              ></v-img>
-            </v-card>
+        <!-- Enlaces a Instagram y TikTok -->
+        <v-row justify="center" class="social-links mt-4">
+          <v-col cols="auto">
+            <a href="https://www.instagram.com" target="_blank" class="social-icon">
+              <i class="fab fa-instagram"></i> Instagram
+            </a>
+          </v-col>
+          <v-col cols="auto">
+            <a href="https://www.tiktok.com" target="_blank" class="social-icon">
+              <i class="fab fa-tiktok"></i> TikTok
+            </a>
           </v-col>
         </v-row>
       </v-container>
   
-      <!-- Imágenes animadas -->
-      <v-container class="images-container mt-10">
-        <v-row justify="center" class="image-row">
-          <v-col v-for="(image, i) in images" :key="i" cols="12" md="4">
-            <v-img
-              :src="image"
-              alt="Imagen"
-              class="animated-image"
-              transition="fade-transition"
-              height="250px"
-            ></v-img>
+      <!-- Flujos de colores e imágenes de fondo entre secciones -->
+      <div class="flow-section" style="background-color: #FFE6BB;">
+        <div class="flow-background"></div>
+        <h3 class="flow-title">Ven por las fotos, quédate por el sabor!!</h3>
+      </div>
+  
+      <!-- Mapa Interactivo -->
+      <v-container class="map-container mt-10" style="background-color: #FCDCE1;">
+        <h2 class="map-title">¿Dónde encontrarnos?</h2>
+        <v-row justify="center">
+          <v-col cols="12" md="10">
+            <div id="map" style="height: 300px;"></div>
           </v-col>
         </v-row>
       </v-container>
     </v-container>
   </template>
   
-  <script setup>
-  const slides = [
-    {
-      title: '¡Holy Llamoly!',
-      subtitle: 'Una experiencia de sabor como ninguna otra.',
-      image: 'https://i.pinimg.com/736x/0a/bd/67/0abd67f186fa9afad78642314158056f.jpg',
-    },
-    {
-      title: 'Siente la Magia',
-      subtitle: 'Cada helado cuenta una historia diferente.',
-      image: 'https://source.unsplash.com/1600x400/?icecream,colorful',
-    },
-    {
-      title: 'Bienvenid@ a Holly Molly',
-      subtitle: 'Donde los sueños se enfrían y se sirven en cono.',
-      image: 'https://source.unsplash.com/1600x400/?dessert,icecream',
-    },
-  ];
+  <script>
+  import { onMounted } from 'vue';
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
   
-  const missionVision = [
-    {
-      title: 'Nuestra Misión',
-      text: 'Sorprender a nuestros visitantes con helados únicos, creativos y llenos de magia en cada cucharada.',
+  export default {
+    name: 'MapComponent',
+    data() {
+      return {
+        slides: [
+          {
+            title: '¡Holy Llamoly!',
+            subtitle: 'Una experiencia de sabor como ninguna otra.',
+            image: 'https://i.pinimg.com/736x/b8/d9/ad/b8d9adae0ca18717ad6c10ac8f5ec0f4.jpg',
+          },
+          {
+            title: 'Siente la Magia',
+            subtitle: 'Cada helado cuenta una historia diferente.',
+            image: 'https://i.pinimg.com/736x/1f/43/96/1f4396368ec4fd827e58ddcc5201686d.jpg',
+          },
+          {
+            title: 'Bienvenid@ a Holly Molly',
+            subtitle: 'Donde los sueños se enfrían y se sirven en cono.',
+            image: 'https://i.pinimg.com/736x/cd/41/be/cd41be76a5f8ccf8b27687e9ed81ca97.jpg',
+          },
+        ],
+        missionVision: [
+          {
+            title: 'Nuestra Misión',
+            text: 'Crear experiencias memorables a través de helados artesanales temáticos y espacios aesthetic.',
+          },
+          {
+            title: 'Nuestra Visión',
+            text: 'Ser la marca de helados temáticos líder en Latinoamérica.',
+          },
+          {
+            title: 'Nuestros Valores',
+            text: 'Creatividad, cercanía, diversión y compromiso con la calidad.',
+          },
+        ],
+      };
     },
-    {
-      title: 'Nuestra Visión',
-      text: 'Convertirnos en la heladería temática favorita de Bolivia y expandir nuestro sabor al mundo.',
-    },
-    {
-      title: 'Nuestros Valores',
-      text: 'Creatividad, cercanía, diversión y compromiso con la calidad.',
-    },
-  ];
+    setup() {
+      onMounted(() => {
+        const map = L.map('map').setView([-16.500000, -68.119300], 14); // La Paz, Bolivia
   
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(map);
+  
+        L.marker([-16.500000, -68.119300]).addTo(map) // Marcador en La Paz
+          .bindPopup('Estamos aquí!')
+          .openPopup();
+      });
+    },
+  };
   </script>
   
   <style scoped>
@@ -121,14 +130,34 @@
   }
   
   .carousel-text {
-    position: absolute;
-    bottom: 20%;
-    left: 10%;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
-    max-width: 80%;
-    animation: fadeInUp 1.5s ease;
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  max-width: 80%;
+  text-align: center;
+  opacity: 0;
+  animation: fadeInUp 1.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
   }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+
   
   .title {
     font-size: 42px;
@@ -141,7 +170,6 @@
     font-family: 'Caviar Dreams', sans-serif;
   }
   
-  /* Animación para la Misión y Visión */
   @keyframes fadeInUp {
     from {
       opacity: 0;
@@ -183,12 +211,24 @@
     color: #633030;
   }
   
-  /* Efecto de hover con cambio de colores */
-  .hover-effect:hover {
-    background-color: #FCDCE1;
+  .social-links {
+    text-align: center;
   }
   
-  /* Flujos de colores y imágenes de fondo entre secciones */
+  .social-icon {
+    font-size: 18px;
+    font-family: 'Caviar Dreams', sans-serif;
+    color: #6b2d1a;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .social-icon:hover {
+    color: #f0d9ef;
+  }
+  
   .flow-section {
     position: relative;
     background-color: #F0D9EF;
@@ -216,7 +256,6 @@
     margin: 0;
   }
   
-  /* Mapa */
   .map-container {
     background-color: #FCDCE1;
     padding: 40px 20px;
@@ -228,6 +267,17 @@
     font-size: 28px;
     color: #6b2d1a;
     margin-bottom: 20px;
+  }
+  
+  #map {
+    width: 100%;
+    height: 300px;
+  }
+  
+  .carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   </style>
   

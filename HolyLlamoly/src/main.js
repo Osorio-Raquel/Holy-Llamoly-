@@ -1,6 +1,9 @@
 import './assets/main.css'
 import './assets/styles.css'; // 👈 Aquí cargas las fuentes
 
+import '@fortawesome/fontawesome-free/css/all.css';
+
+
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
