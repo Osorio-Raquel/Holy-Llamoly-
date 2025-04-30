@@ -6,11 +6,16 @@
       <v-app-bar-nav-icon class="d-sm-none" @click="drawer = !drawer" />
 
       <!-- Título -->
-      <v-toolbar-title 
-        @click="$router.push('/')" 
-        class="toolbar-title">
-        Holly Llamolly
-      </v-toolbar-title>
+      <div class="d-flex align-center" style="cursor: pointer;" @click="$router.push('/')">
+    <img 
+      src="@/components/Images/ologo.jpeg" 
+      alt="Logo de Holly Llamolly" 
+      style="height: 40px; margin-right: 10px;" 
+    />
+    <v-toolbar-title class="toolbar-title">
+      Holly Llamolly
+    </v-toolbar-title>
+  </div>
 
       <!-- Tabs visibles solo en pantallas medianas y grandes -->
       <div class="d-none d-sm-flex tabs-container">

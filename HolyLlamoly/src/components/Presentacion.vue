@@ -36,7 +36,7 @@
         <!-- Enlaces a Instagram y TikTok -->
         <v-row justify="center" class="social-links mt-4">
           <v-col cols="auto">
-            <a href="https://www.instagram.com" target="_blank" class="social-icon">
+            <a href="https://www.instagram.com/holyllamoly_icecream/?igsh=dGVqeW4ycGxzdWcy#" target="_blank" class="social-icon">
               <i class="fab fa-instagram"></i> Instagram
             </a>
           </v-col>
@@ -50,6 +50,11 @@
   
       <!-- Flujos de colores e imágenes de fondo entre secciones -->
       <div class="flow-section" style="background-color: #FFE6BB;">
+        <img 
+      src="@/components/Images/ologo.jpeg" 
+      alt="Logo de Holly Llamolly" 
+      style="height: 420px; margin-left: 750px;" 
+    />
         <div class="flow-background"></div>
         <h3 class="flow-title">Ven por las fotos, quédate por el sabor!!</h3>
       </div>
