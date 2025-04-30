@@ -1,4 +1,5 @@
 import './assets/main.css'
+import './assets/styles.css'; // 👈 Aquí cargas las fuentes
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
